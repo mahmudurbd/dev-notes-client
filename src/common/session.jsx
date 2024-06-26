@@ -3,7 +3,15 @@ const storeInSession = (key, value) => {
 };
 
 const lookInSession = (key) => {
-  return sessionStorage.getItem(key);
+  try {
+    const item = sessionStorage.getItem(key);
+    return item;
+  } catch (error) {
+    console.error("Error accessing session storage", error);
+    return null;
+  }
+  // console.log(sessionStorage.getItem(key));
+  // return sessionStorage.getItem(key);
 };
 
 const removeFromSession = (key) => {

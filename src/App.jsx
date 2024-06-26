@@ -8,19 +8,36 @@ export const UserContext = createContext({});
 
 const App = () => {
   const [userAuth, setUserAuth] = useState({});
+  const { access_token } = userAuth;
+
+  // useEffect(() => {
+  //   let userInSession = lookInSession("user");
+  //   console.log(userInSession);
+
+  //   userInSession
+  //     ? setUserAuth(JSON.parse(userInSession))
+  //     : setUserAuth({ access_token: null });
+  // }, []);
 
   useEffect(() => {
-    let userInSession = lookInSession("user");
-
-    userInSession
-      ? setUserAuth(JSON.parse(userInSession))
-      : setUserAuth({ access_token: null });
-  }, []);
+    if (!access_token) {
+      const sessionData = lookInSession("user");
+      if (sessionData) {
+        setUserAuth(JSON.parse(sessionData));
+      } else {
+        setUserAuth({ access_token: null });
+      }
+    }
+  }, [access_token, setUserAuth]);
+  console.log(userAuth);
 
   return (
     <UserContext.Provider value={{ userAuth, setUserAuth }}>
       <Routes>
-        <Route path="/" element={<Navbar />}>
+        <Route
+          path="/"
+          element={<Navbar userAuth={userAuth} setUserAuth={setUserAuth} />}
+        >
           <Route path="/signin" element={<UserAuthForm type="sign-in" />} />
           <Route path="/signup" element={<UserAuthForm type="sign-up" />} />
         </Route>

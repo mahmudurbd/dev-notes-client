@@ -13,14 +13,14 @@ const Navbar = () => {
   const { userAuth, setUserAuth } = useContext(UserContext);
   const { access_token, profile_img } = userAuth;
 
-  useEffect(() => {
-    if (!access_token) {
-      const sessionData = lookInSession("user");
-      if (sessionData) {
-        setUserAuth(JSON.parse(sessionData));
-      }
-    }
-  }, [access_token, setUserAuth]);
+  // useEffect(() => {
+  //   if (!access_token) {
+  //     const sessionData = lookInSession("user");
+  //     if (sessionData) {
+  //       setUserAuth(JSON.parse(sessionData));
+  //     }
+  //   }
+  // }, [access_token, setUserAuth]);
 
   console.log(access_token, "img url :", profile_img);
 
