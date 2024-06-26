@@ -1,0 +1,35 @@
+.nav-area {
+  .navbar-right {
+    .user-area {
+      .bell-icon {
+        background-color: #cccccc74;
+        &:hover {
+          background-color: #ccccccc7;
+          transition: 0.2s ease-in-out;
+        }
+      }
+      .profile-btn {
+        border: 1px solid #ccc;
+        &:hover {
+          background-color: #ccc;
+          transition: 0.2s ease-in-out;
+        }
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 100% !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .user-area {
+    flex-direction: column !important;
+    .bell-icon {
+      margin: 5px 0px !important;
+    }
+  }
+}
