@@ -14,7 +14,6 @@ const UserAuthForm = ({ type }) => {
     userAuth: { access_token },
     setUserAuth,
   } = useContext(UserContext);
-  // console.log(access_token);
 
   const userAuthThroughServer = async (serverRoute, formData) => {
     await axios
@@ -76,12 +75,19 @@ const UserAuthForm = ({ type }) => {
     // return toast.success("Successfully Signup!");
   };
 
+  // Google Handler
   const handleGoolgeAuth = (e) => {
     e.preventDefault();
 
     authWithGoogle()
       .then((user) => {
-        console.log(user);
+        let serverRoute = "/google-auth";
+
+        let formData = {
+          access_token: user.accessToken,
+        };
+
+        userAuthThroughServer(serverRoute, formData);
       })
       .catch((err) => {
         toast.error("Have a problem with google login");

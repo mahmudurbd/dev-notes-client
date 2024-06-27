@@ -3,7 +3,6 @@ import "./UserDropDown.scss";
 import AnimationWrapper from "../common/AnimationWrapper";
 import { Link } from "react-router-dom";
 import { removeFromSession } from "../common/session";
-import { UserContext } from "../App";
 
 const UserDropDown = ({ username, setUserAuth }) => {
   const handleSignOut = () => {
@@ -16,19 +15,19 @@ const UserDropDown = ({ username, setUserAuth }) => {
       <div className="user-dropdown absolute right-0 mt-2 pt-2 w-48 bg-white rounded-md shadow-xl z-20">
         <Link
           to={`/user/${username}`}
-          className="dropdown-item block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
+          className="dropdown-item block px-4 py-2 text-md capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
         >
           Profile
         </Link>
         <Link
           to="/dashboard/blogs"
-          className="dropdown-item block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
+          className="dropdown-item block px-4 py-2 text-md capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
         >
           Dashboard
         </Link>
         <Link
           to="/settings/edit-profile"
-          className="dropdown-item block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
+          className="dropdown-item block px-4 py-2 text-md capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
         >
           Settings
         </Link>
